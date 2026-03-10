@@ -6,14 +6,13 @@ const NavBar = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            const isScrolled = window.scrollY > 10;
-            setScrolled(true);
+            setScrolled(window.scrollY > 10);
         }
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
 
-        return () => {window.removeEventListener('scroll', handleScroll);}
-    },[])
+        return () => { window.removeEventListener('scroll', handleScroll); }
+    }, [])
 
 
 

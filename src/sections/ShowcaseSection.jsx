@@ -10,7 +10,6 @@ const ShowcaseSection = () => {
     const project1Ref = useRef(null);
     const project2Ref = useRef(null);
     const project3Ref = useRef(null);
-    const project4Ref = useRef(null);
 
 
     useGSAP(() => {
