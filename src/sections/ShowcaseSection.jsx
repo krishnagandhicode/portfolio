@@ -13,32 +13,21 @@ const ShowcaseSection = () => {
 
 
     useGSAP(() => {
-        const projects = [project1Ref.current, project2Ref.current, project3Ref.current];
-
-        projects.forEach((card, index) => {
-            gsap.fromTo(
-                card, {
-                    y:50, opacity: 0
-                },
-                {
-                    y: 0,
-                    opacity: 1,
-                    duration : 1,
-                    delay : 0.3 * (index+1), 
-                    // {/*This is not working good delay isme jaada hai niche vaale me kaafi better hai*/} but isko hatane pr index isnever used ka error aa rha hai ;)
-
-                    // delay : 0.3,
-                    scrollTrigger: {
-                        trigger: card,
-                        start: 'top bottom-=100',
-                    }
-                }
-            )
-        })
         gsap.fromTo(
-            sectionRef.current,
-            {opacity: 0},
-            {opacity: 1 , duration: 1.5})
+            [project1Ref.current, project2Ref.current, project3Ref.current],
+            { y: 50, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 1,
+                stagger: 0.2,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: 'top 80%',
+                }
+            }
+        );
     }, [])
 
     return (

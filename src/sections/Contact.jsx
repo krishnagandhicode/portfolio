@@ -17,7 +17,7 @@ const Contact = () => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setForm({ ...form, [name]: value });
+        setForm(f => ({ ...f, [name]: value }));
     };
 
     const handleSubmit = async (e) => {

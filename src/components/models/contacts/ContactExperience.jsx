@@ -8,6 +8,7 @@ const ContactExperience = () => {
         <Canvas
             camera={{ position: [0, 3, 7], fov: 45 }}
             dpr={[1, 1.25]}
+            frameloop="demand"
             gl={{ antialias: false, powerPreference: "high-performance" }}
         >
             <ambientLight intensity={0.5} color="#fff4e6" />

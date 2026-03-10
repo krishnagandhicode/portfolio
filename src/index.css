@@ -407,6 +407,7 @@ section {
     height: 100%;
     position: absolute;
     overflow: hidden;
+    will-change: transform;
     animation: marquee 60s linear infinite;
 }
 .marquee-item {
@@ -414,10 +415,10 @@ section {
 }
 @keyframes marquee {
     0% {
-        left: 0;
+        transform: translateX(0);
     }
     100% {
-        left: -100%;
+        transform: translateX(-50%);
     }
 }
 /* marquee end */
