@@ -8,4 +8,15 @@ export default defineConfig({
       react(),
       tailwindcss()
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ["react", "react-dom"],
+          three: ["three", "@react-three/fiber", "@react-three/drei", "@react-three/postprocessing"],
+          motion: ["gsap", "@gsap/react"]
+        }
+      }
+    }
+  }
 })

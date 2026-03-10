@@ -4,8 +4,11 @@ import HeroExperience from "../components/hero_modelss/HeroExperience.jsx";
 import { useGSAP} from '@gsap/react';
 import gsap from 'gsap';
 import AnimatedCounter from "../components/AnimatedCounter.jsx";
+import useInViewOnce from "../hooks/useInViewOnce.js";
 
 const Hero = () => {
+    const { targetRef, hasBeenVisible } = useInViewOnce({ rootMargin: "200px 0px" });
+
     useGSAP(() =>{
         gsap.fromTo('.hero-text h1',
             {
@@ -68,8 +71,8 @@ const Hero = () => {
 
                 {/*RIGHT: 3D Model */}
                 <figure>
-                    <div className="hero-3d-layout">
-                        <HeroExperience />
+                    <div ref={targetRef} className="hero-3d-layout">
+                        {hasBeenVisible ? <HeroExperience /> : null}
                     </div>
                 </figure>
             </div>

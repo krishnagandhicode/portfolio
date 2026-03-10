@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import {Canvas} from "@react-three/fiber";
-import {OrbitControls} from "@react-three/drei";
+import {OrbitControls, useProgress, Html, AdaptiveDpr, AdaptiveEvents} from "@react-three/drei";
 import {useMediaQuery} from "react-responsive";
 import {Room} from "./Room.jsx";
 import HeroLights from "./HeroLights.jsx";
 import Particles from './Particles.jsx';
+
+const Loader = () => {
+    const { progress } = useProgress();
+    return (
+        <Html center>
+            <div style={{ color: '#fff', fontSize: '14px', fontFamily: 'sans-serif', textAlign: 'center' }}>
+                <div style={{ marginBottom: '8px' }}>Loading {Math.round(progress)}%</div>
+                <div style={{ width: '160px', height: '4px', background: '#333', borderRadius: '2px' }}>
+                    <div style={{ width: `${progress}%`, height: '100%', background: '#a259ff', borderRadius: '2px', transition: 'width 0.3s' }} />
+                </div>
+            </div>
+        </Html>
+    );
+};
 
 const HeroExperience = () => {
     const isMobile = useMediaQuery({query: "(max-width: 768px)" });
@@ -12,7 +26,12 @@ const HeroExperience = () => {
 
 
     return (
-        <Canvas camera={{position: [0,0,15], fov:45}}>
+        <Canvas
+            camera={{position: [0,0,15], fov:45}}
+            dpr={isMobile ? [1, 1] : [1, 1.25]}
+            gl={{ antialias: false, powerPreference: "high-performance" }}
+            performance={{ min: 0.6 }}
+        >
 
             <OrbitControls
                 enablePan={false}
@@ -22,16 +41,20 @@ const HeroExperience = () => {
                 minPolarAngle={Math.PI / 5}
                 maxPolarAngle={Math.PI / 2}
             />
+            <AdaptiveDpr pixelated />
+            <AdaptiveEvents />
 
-            <HeroLights />
-            <Particles count={101} />
-            <group
-                scale={isMobile? 0.7 : 1}
-                position={[0,-3.5,0]}
-                rotation={[0, -Math.PI/4, 0]}
-            >
-                <Room />
-            </group>
+            <Suspense fallback={<Loader />}>
+                <HeroLights />
+                <Particles count={isMobile ? 60 : 90} />
+                <group
+                    scale={isMobile? 0.7 : 1}
+                    position={[0,-3.5,0]}
+                    rotation={[0, -Math.PI/4, 0]}
+                >
+                    <Room enableBloom={!isTablet} />
+                </group>
+            </Suspense>
 
         </Canvas>
     )

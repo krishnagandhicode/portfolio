@@ -3,8 +3,10 @@ import emailjs from "@emailjs/browser";
 
 import TitleHeader from "../components/TitleHeader";
 import ContactExperience from "../components/models/contacts/ContactExperience";
+import useInViewOnce from "../hooks/useInViewOnce.js";
 
 const Contact = () => {
+    const { targetRef, hasBeenVisible } = useInViewOnce({ rootMargin: "250px 0px" });
     const formRef = useRef(null);
     const [loading, setLoading] = useState(false);
     const [form, setForm] = useState({
@@ -108,8 +110,8 @@ const Contact = () => {
                         </div>
                     </div>
                     <div className="xl:col-span-7 min-h-96">
-                        <div className="bg-[#cd7c2e] w-full h-full hover:cursor-grab rounded-3xl overflow-hidden">
-                            <ContactExperience />
+                        <div ref={targetRef} className="bg-[#cd7c2e] w-full h-full hover:cursor-grab rounded-3xl overflow-hidden">
+                            {hasBeenVisible ? <ContactExperience /> : null}
                         </div>
                     </div>
                 </div>
