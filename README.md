@@ -50,12 +50,13 @@ Understanding modern frontend deployment workflows
 
 Structuring scalable React projects
 
+
 Contact
 
 Portfolio: https://krishna-gandhi.netlify.app/
 
-GitHub: https://github.com/krishnaGandhi11
+GitHub: https://github.com/krishnagandhicode
 
-LinkedIn: (add your LinkedIn URL here)
+LinkedIn: https://www.linkedin.com/in/krishnagandhicode
 
 If you like this project, feel free to star the repository.
