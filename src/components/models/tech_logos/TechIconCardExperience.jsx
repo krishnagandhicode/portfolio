@@ -20,7 +20,7 @@ const TechIconCardExperience = ({ model }) => {
     }, [scene]);
 
     return (
-        <Canvas>
+        <Canvas dpr={[1, 1.5]} gl={{ antialias: false, powerPreference: "high-performance" }}>
             <ambientLight intensity={0.3} />
             <directionalLight position={[5, 5, 5]} intensity={1} />
             <spotLight

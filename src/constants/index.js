@@ -166,9 +166,9 @@ const techStackIcons = [
     },
     {
         name: "Meachine Learning",
-        modelPath: "/models/cyber_brain_ai.glb",
-        scale: 3,
-        rotation: [0,1, 0],
+        modelPath: "/models/python-transformed.glb",
+        scale: 2,
+        rotation: [0, 0, 0],
     },
     {
         name: "Backend Developer",
