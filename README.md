@@ -57,6 +57,6 @@ Portfolio: https://krishna-gandhi.netlify.app/
 
 GitHub: https://github.com/krishnagandhicode
 
-LinkedIn: https://www.linkedin.com/in/krishnagandhicode 
+LinkedIn: https://www.linkedin.com/in/krishnagandhicode
 
 If you like this project, feel free to star the repository.
