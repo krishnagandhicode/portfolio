@@ -408,16 +408,17 @@ section {
     position: absolute;
     overflow: hidden;
     animation: marquee 60s linear infinite;
+    will-change: transform;
 }
 .marquee-item {
     float: left;
 }
 @keyframes marquee {
     0% {
-        left: 0;
+        transform: translateX(0);
     }
     100% {
-        left: -100%;
+        transform: translateX(-50%);
     }
 }
 /* marquee end */

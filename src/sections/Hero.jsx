@@ -3,11 +3,13 @@ import Button from "../components/Button.jsx";
 import HeroExperience from "../components/hero_modelss/HeroExperience.jsx";
 import { useGSAP} from '@gsap/react';
 import gsap from 'gsap';
+import { useRef } from "react";
 import AnimatedCounter from "../components/AnimatedCounter.jsx";
 import useInViewOnce from "../hooks/useInViewOnce.js";
 
 const Hero = () => {
     const { targetRef, hasBeenVisible } = useInViewOnce({ rootMargin: "200px 0px" });
+    const heroRef = useRef(null);
 
     useGSAP(() =>{
         gsap.fromTo('.hero-text h1',
@@ -23,11 +25,11 @@ const Hero = () => {
                 ease: 'power2.inOut'
             }
             )
-    })
+    }, { scope: heroRef, dependencies: [] })
 
 
     return (
-        <section id="hero" className="relative overflow-hidden">
+        <section id="hero" ref={heroRef} className="relative overflow-hidden">
             <div className="absolute top-0 left-0 z-10">
                 <img src="/images/bg.png" alt="Background" />
             </div>
