@@ -23,6 +23,7 @@ const Loader = () => {
 const HeroExperience = () => {
     const isMobile = useMediaQuery({query: "(max-width: 768px)" });
     const isTablet = useMediaQuery({query: "(max-width: 1024px)" });
+    const isLargeDesktop = useMediaQuery({ query: "(min-width: 1280px)" });
 
 
     return (
@@ -46,13 +47,13 @@ const HeroExperience = () => {
 
             <Suspense fallback={<Loader />}>
                 <HeroLights />
-                <Particles count={isMobile ? 60 : 90} />
+                <Particles count={isMobile ? 35 : 60} />
                 <group
                     scale={isMobile? 0.7 : 1}
                     position={[0,-3.5,0]}
                     rotation={[0, -Math.PI/4, 0]}
                 >
-                    <Room enableBloom={!isTablet} />
+                    <Room enableBloom={!isTablet && isLargeDesktop} />
                 </group>
             </Suspense>
 
