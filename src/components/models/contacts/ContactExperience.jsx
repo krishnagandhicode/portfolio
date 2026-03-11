@@ -9,6 +9,8 @@ const ContactExperience = () => {
             camera={{ position: [0, 3, 7], fov: 45 }}
             dpr={[1, 1.25]}
             gl={{ antialias: false, powerPreference: "high-performance" }}
+            frameloop="demand"
+            performance={{ min: 0.6 }}
         >
             <ambientLight intensity={0.5} color="#fff4e6" />
 
