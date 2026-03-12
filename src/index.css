@@ -442,7 +442,6 @@ section {
     border-radius: 12px;
     border: 2px solid transparent;
     background: var(--gradient);
-    background-attachment: fixed;
     mask: linear-gradient(#0000, #0000),
     conic-gradient(
             from calc((var(--start) - 15) * 1deg),

@@ -16,22 +16,13 @@ const ExperienceSection = () => {
             // Animate the card coming in from the left
             // and fade in
             gsap.from(card, {
-                // Move the card in from the left
-                xPercent: -100,
-                // Make the card invisible at the start
+                x: -50,
                 opacity: 0,
-                // Set the origin of the animation to the left side of the card
-                transformOrigin: "left left",
-                // Animate over 1 second
-                duration: 1,
-                // Use a power2 ease-in-out curve
-                ease: "power2.inOut",
-                // Trigger the animation when the card is 80% of the way down the screen
+                duration: 0.7,
+                ease: "power2.out",
                 scrollTrigger: {
-                    // The card is the trigger element
                     trigger: card,
-                    // Trigger the animation when the card is 80% down the screen
-                    start: "top 80%",
+                    start: "top 85%",
                 },
             });
         });
@@ -95,8 +86,8 @@ const ExperienceSection = () => {
                                 <div className="xl:w-2/6">
                                     <GlowCard card={card}>
                                         <div>
-                                            <img src={card.imgPath} alt="exp-img" />
-                                            <img src={card.img1Path} alt="exp-img" />
+                                            <img src={card.imgPath} alt="exp-img" loading="lazy" />
+                                            <img src={card.img1Path} alt="exp-img" loading="lazy" />
                                         </div>
                                     </GlowCard>
                                 </div>
@@ -108,7 +99,7 @@ const ExperienceSection = () => {
                                         </div>
                                         <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
                                             <div className="timeline-logo">
-                                                <img src={card.logoPath} alt="logo" />
+                                                <img src={card.logoPath} alt="logo" loading="lazy" />
                                             </div>
                                             <div>
                                                 <h1 className="font-semibold text-3xl">{card.title}</h1>
