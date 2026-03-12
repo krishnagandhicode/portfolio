@@ -1,19 +1,28 @@
 import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 
+const seededRandom = (seed) => {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+};
+
 const Particles = ({ count = 200, active = true }) => {
   const mesh = useRef();
 
   const particles = useMemo(() => {
     const temp = [];
     for (let i = 0; i < count; i++) {
+      const xSeed = seededRandom(i + 1);
+      const ySeed = seededRandom(i + 101);
+      const zSeed = seededRandom(i + 1001);
+      const speedSeed = seededRandom(i + 10001);
       temp.push({
         position: [
-          (Math.random() - 0.5) * 10,
-          Math.random() * 10 + 5, // higher starting point
-          (Math.random() - 0.5) * 10,
+          (xSeed - 0.5) * 10,
+          ySeed * 10 + 5,
+          (zSeed - 0.5) * 10,
         ],
-        speed: 0.005 + Math.random() * 0.001,
+        speed: 0.005 + speedSeed * 0.001,
       });
     }
     return temp;

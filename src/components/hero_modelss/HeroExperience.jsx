@@ -39,6 +39,7 @@ const HeroExperience = ({ isVisible = true }) => {
             camera={{position: [0,0,15], fov:45}}
             dpr={isMobile ? [1, 1] : [1, 1.25]}
             gl={{ antialias: false, powerPreference: "high-performance" }}
+            frameloop={isActive ? "always" : "never"}
             performance={{ min: 0.6 }}
         >
 
