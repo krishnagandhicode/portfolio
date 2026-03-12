@@ -1,7 +1,7 @@
 import { useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
 
-const Particles = ({ count = 200 }) => {
+const Particles = ({ count = 200, active = true }) => {
   const mesh = useRef();
 
   const particles = useMemo(() => {
@@ -20,6 +20,7 @@ const Particles = ({ count = 200 }) => {
   }, [count]);
 
   useFrame(() => {
+    if (!active || !mesh.current) return;
     const positions = mesh.current.geometry.attributes.position.array;
     for (let i = 0; i < count; i++) {
       let y = positions[i * 3 + 1];
