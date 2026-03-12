@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useState, useEffect } from 'react'
 import {Canvas} from "@react-three/fiber";
 import {OrbitControls, useProgress, Html, AdaptiveDpr, AdaptiveEvents} from "@react-three/drei";
 import {useMediaQuery} from "react-responsive";
@@ -20,16 +20,26 @@ const Loader = () => {
     );
 };
 
-const HeroExperience = () => {
+const HeroExperience = ({ isVisible = true }) => {
     const isMobile = useMediaQuery({query: "(max-width: 768px)" });
     const isTablet = useMediaQuery({query: "(max-width: 1024px)" });
+    const isLargeDesktop = useMediaQuery({ query: "(min-width: 1280px)" });
+    const [docVisible, setDocVisible] = useState(!document.hidden);
 
+    useEffect(() => {
+        const handleVisibility = () => setDocVisible(!document.hidden);
+        document.addEventListener('visibilitychange', handleVisibility);
+        return () => document.removeEventListener('visibilitychange', handleVisibility);
+    }, []);
+
+    const isActive = isVisible && docVisible;
 
     return (
         <Canvas
             camera={{position: [0,0,15], fov:45}}
             dpr={isMobile ? [1, 1] : [1, 1.25]}
             gl={{ antialias: false, powerPreference: "high-performance" }}
+            frameloop={isActive ? "always" : "never"}
             performance={{ min: 0.6 }}
         >
 
@@ -46,13 +56,13 @@ const HeroExperience = () => {
 
             <Suspense fallback={<Loader />}>
                 <HeroLights />
-                <Particles count={isMobile ? 60 : 90} />
+                <Particles count={isMobile ? 35 : 60} active={isActive} />
                 <group
                     scale={isMobile? 0.7 : 1}
                     position={[0,-3.5,0]}
                     rotation={[0, -Math.PI/4, 0]}
                 >
-                    <Room enableBloom={!isTablet} />
+                    <Room enableBloom={!isTablet && isLargeDesktop} />
                 </group>
             </Suspense>
 

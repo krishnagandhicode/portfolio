@@ -3,13 +3,25 @@ import Button from "../components/Button.jsx";
 import HeroExperience from "../components/hero_modelss/HeroExperience.jsx";
 import { useGSAP} from '@gsap/react';
 import gsap from 'gsap';
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import AnimatedCounter from "../components/AnimatedCounter.jsx";
 import useInViewOnce from "../hooks/useInViewOnce.js";
 
 const Hero = () => {
     const { targetRef, hasBeenVisible } = useInViewOnce({ rootMargin: "200px 0px" });
     const heroRef = useRef(null);
+    const [heroIsVisible, setHeroIsVisible] = useState(true);
+
+    useEffect(() => {
+        const el = heroRef.current;
+        if (!el) return;
+        const obs = new IntersectionObserver(
+            ([entry]) => setHeroIsVisible(entry.isIntersecting),
+            { threshold: 0.05 }
+        );
+        obs.observe(el);
+        return () => obs.disconnect();
+    }, []);
 
     useGSAP(() =>{
         gsap.fromTo('.hero-text h1',
@@ -74,7 +86,7 @@ const Hero = () => {
                 {/*RIGHT: 3D Model */}
                 <figure>
                     <div ref={targetRef} className="hero-3d-layout">
-                        {hasBeenVisible ? <HeroExperience /> : null}
+                        {hasBeenVisible ? <HeroExperience isVisible={heroIsVisible} /> : null}
                     </div>
                 </figure>
             </div>
