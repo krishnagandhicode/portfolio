@@ -100,24 +100,37 @@ const abilities = [
 
 const techStackImgs = [
     {
-        name: "React Developer",
-        imgPath: "/images/logos/react.png",
+        name: "Java",
+        imgPath: "/images/logos/java.png",
     },
     {
-        name: "Python Developer",
+        name: "PHP",
+        imgPath: "/images/logos/php.png",
+    },
+    {
+        name: "JavaScript",
+        imgPath: "/images/logos/javascript.png",
+        iconScale: 1.12,
+    },
+    {
+        name: "Joomla",
+        imgPath: "/images/joomla-img.png",
+    },
+    {
+        name: "Python",
         imgPath: "/images/logos/python.svg",
     },
     {
-        name: "Backend Developer",
+        name: "React",
+        imgPath: "/images/logos/react.png",
+    },
+    {
+        name: "Node.js",
         imgPath: "/images/logos/node.png",
     },
     {
-        name: "Interactive Developer",
+        name: "Three.js",
         imgPath: "/images/logos/three.png",
-    },
-    {
-        name: "Project Manager",
-        imgPath: "/images/logos/git.svg",
     },
 ];
 
@@ -182,24 +195,38 @@ const techStackIcons = [
         scale: 0.05,
         rotation: [0, 0, 0],
     },
-    
+
 
 ];
 
 const expCards = [
     {
         review:"",
+        imgPath: "/images/joomla.png",
+        logoPath: "/images/joomla-img.png",
+        title: "Joomla Core Contributor & Extension Developer",
+        date: "Open Source | 2025–Present",
+        responsibilities: [
+            "Engineering core stability and accessibility for the Joomla 5.x/6.x ecosystem.",
+            "High-Impact Fixes: Resolved critical system failures including the Calendar Fatal Crash (#46833) and Asset Path Resolution (#47251).",
+            "Core Contributions: Merged 30+ Pull Requests across ACL security, Action Logs (#46884), and UI accessibility.",
+            "Extension Architecture: Developed a custom Content Plugin leveraging Dependency Injection (DI) and com_ajax for automated metadata workflows.",
+            "Community Leadership: Active participant in weekly PR testing and global 'Pizza, Bugs and Fun' events, moving community code toward production readiness."
+        ],
+    },
+    {
+        review:"",
         imgPath: "/images/cgc-img.png",
         img1Path: "/images/WebDev-logo.png",
         logoPath: "/images/cgc-logo.png",
-        title: "B.Tech Journey & Web Development (2023 – Present)",
+        title: "B.Tech Journey",
         date: "Chandigarh Group of Colleges, Landran | 2023–2027 | CGPA: 8.02",
         responsibilities: [
             "Started B.Tech in CSE and began building a strong base in programming, web technologies, and problem-solving.",
             "Completed Front-End Web Development (Infosys Springboard) — HTML, CSS, JS, responsive designs.",
             "Built multiple practical projects including: ",
                 "ChatBot using Gemini AI (React + JS)",
-                "Portfolio websites & interactive UI components",       
+                "Portfolio websites & interactive UI components",
                 "Gained hands-on experience with React.js, Tailwind, JavaScript, APIs, and version control (Git/GitHub).",
                 "Actively applying academic concepts in real-world projects and continuous self-learning."
             ],
@@ -209,8 +236,8 @@ const expCards = [
         imgPath: "/images/cn-img.png",
         img1Path: "/images/DSA-img.png",
         logoPath: "/images/cn-logo.png",
-        title: "Java DSA Training & Open-Source Contributions (2024 – Present)",
-        date: "2023–2024",
+        title: "Java DSA Training & Open-Source Contributions",
+        date: "2024-Present",
         responsibilities: [
             "Completed structured Data Structures & Algorithms in Java training.",
             "Strengthened fundamentals: arrays, recursion, OOP, trees, graphs, hashing, and optimization.",
@@ -318,7 +345,7 @@ const socialImgs = [
         url: "https://drive.google.com/file/d/1f4qNiBu1_EzNKLGhoiLNpqVvM1ThX497/view?usp=sharing",
         imgPath: "/images/Resume.png",
     },
-    
+
 ];
 
 const about = {

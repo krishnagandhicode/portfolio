@@ -46,7 +46,7 @@ const TechStack = () => {
               The key is set to the name of the tech stack icon, and the classnames are set to
               card-border, tech-card, overflow-hidden, and group. The xl:rounded-full and rounded-lg
               classes are only applied on larger screens. */}
-                    
+
 
                      {/*This is for the img part*/}
                    {techStackImgs.map((techStackIcon, index) => (
@@ -57,7 +57,11 @@ const TechStack = () => {
                         <div className="tech-card-animated-bg" />
                         <div className="tech-card-content">
                         <div className="tech-icon-wrapper">
-                            <img src={techStackIcon.imgPath} alt="" />
+                            <img
+                                src={techStackIcon.imgPath}
+                                alt=""
+                                style={{ transform: `scale(${techStackIcon.iconScale || 1})` }}
+                            />
                         </div>
                         <div className="padding-x w-full">
                             <p>{techStackIcon.name}</p>
