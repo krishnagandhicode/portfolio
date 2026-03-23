@@ -1,9 +1,66 @@
-import React, {useRef} from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { gsap} from "gsap/gsap-core";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import { useGSAP} from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const projects = [
+    {
+        title: "BrainWave AI: Full-Stack AI Chat App",
+        desc: "Production-deployed AI chat platform with secure auth, persistent chat history, Gemini-powered responses, image uploads, and polished UX. Tech: React 19, Vite, Node.js, Express, MongoDB Atlas, Clerk, Gemini, ImageKit.",
+        imgPath: "/images/project3-jj.webp",
+        alt: "BrainWave AI Full-Stack Chat App",
+        className: "bg-[#ffe7eb]",
+        link: "https://brain-wave-ai-dev.vercel.app/",
+    },
+    {
+        title: "LILIPET: Vanilla UI E-Commerce Design",
+        desc: "A multi-page e-commerce frontend built entirely without frameworks. Designed to master semantic HTML5 and responsive Vanilla CSS architecture, featuring custom media queries, flexbox layouts, and interactive DOM manipulation. Tech: HTML5, CSS3, JavaScript (Vanilla).",
+        imgPath: "/images/project22.webp",
+        alt: "LILIPET Vanilla UI E-Commerce Design",
+        className: "bg-[#eaf4ff]",
+        link: "https://lilipet.netlify.app/",
+    },
+];
+
+const IframePreview = ({ src, title, onClick }) => {
+    const containerRef = useRef(null);
+    const [dims, setDims] = useState({ scale: 0.3, height: 300 });
+
+    useEffect(() => {
+        const el = containerRef.current;
+        if (!el) return;
+        const obs = new ResizeObserver(([entry]) => {
+            const { width, height } = entry.contentRect;
+            if (width > 0) setDims({ scale: width / 1440, height });
+        });
+        obs.observe(el);
+        return () => obs.disconnect();
+    }, []);
+
+    return (
+        <div
+            ref={containerRef}
+            className="w-full h-full relative overflow-hidden rounded-xl cursor-pointer"
+            onClick={onClick}
+        >
+            <iframe
+                src={src}
+                title={title}
+                loading="lazy"
+                style={{
+                    width: '1440px',
+                    height: dims.scale > 0 ? `${dims.height / dims.scale}px` : '1000px',
+                    border: 'none',
+                    transform: `scale(${dims.scale})`,
+                    transformOrigin: 'top left',
+                    pointerEvents: 'none',
+                }}
+            />
+        </div>
+    );
+};
 
 const ShowcaseSection = () => {
     const sectionRef = useRef(null);
@@ -25,6 +82,8 @@ const ShowcaseSection = () => {
         });
     }, { scope: sectionRef, dependencies: [] })
 
+    const leftProjectLink = "https://jobjolt-ai.streamlit.app/";
+
     return (
         <div id="work" ref={sectionRef} className="app-showcase">
             <div className="w-full">
@@ -33,7 +92,13 @@ const ShowcaseSection = () => {
 
                     <div className="first-project-wrapper">
                         <div className="image-wrapper">
-                            <img className="cursor-pointer" loading="lazy" onClick={() => window.open("https://jobjolt-ai.streamlit.app/", "_blank")} src="/images/project1-ww.webp" alt="JobJolt"/>
+                            <img
+                                className="cursor-pointer"
+                                loading="lazy"
+                                onClick={() => window.open(leftProjectLink, "_blank")}
+                                src="/images/project1-ww.webp"
+                                alt="Real-Time Intelligent Navigation Assistant"
+                            />
                         </div>
                         <div className="text-content">
                             <h2>Real-Time Intelligent Navigation Assistant</h2>
@@ -47,25 +112,27 @@ const ShowcaseSection = () => {
 
                     {/* Right*/}
                     <div className="project-list-wrapper overflow-hidden">
-                        <div className="project">
-                            <div className="image-wrapper bg-[#ffefdb]"> {/*yha se backgound color change hoga*/}
-                                <img loading="lazy" src="/images/project22.webp" alt="Library Management Platform" />
+                        {projects.map((project) => (
+                            <div key={project.title} className="project">
+                                <div className={`image-wrapper ${project.link !== "#" ? "bg-transparent p-0" : project.className}`}>
+                                    {project.link !== "#" ? (
+                                        <IframePreview
+                                            src={project.link}
+                                            title={project.title}
+                                            onClick={() => window.open(project.link, "_blank")}
+                                        />
+                                    ) : (
+                                        <img
+                                            loading="lazy"
+                                            src={project.imgPath}
+                                            alt={project.alt}
+                                        />
+                                    )}
+                                </div>
+                                <h2>{project.title}</h2>
+                                <p className="text-white-50 md:text-xl">{project.desc}</p>
                             </div>
-                            <h2>The Library Management Platform</h2>
-                            <p className="text-white-50 md:text-xl">
-                                Tech: Next.js,PostgreSQL,ImageKit,TypeScript,Tailwind CSS
-                            </p>
-                        </div>
-
-                        <div className="project">
-                            <div className="image-wrapper bg-[#ffe7eb]"> {/*yha se backgound color change hoga*/}
-                                <img className="cursor-pointer" loading="lazy" onClick={() => window.open("https://jobjolt-ai.streamlit.app/", "_blank")} src="/images/project3-jj.webp" alt="YC Directory" />
-                            </div>
-                            <h2>AI-based Resume Roll Classifier</h2>
-                            <p className="text-white-50 md:text-xl">
-                                Tech: Python, Scikit-learn
-                            </p>
-                        </div>
+                        ))}
                     </div>
 
 
