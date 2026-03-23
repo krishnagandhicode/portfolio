@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
 import TitleHeader from "../components/TitleHeader";
@@ -6,6 +6,10 @@ import { socialImgs } from "../constants/index.js";
 
 const Contact = () => {
     const formRef = useRef(null);
+    const imagePanelRef = useRef(null);
+    const imageRef = useRef(null);
+    const glowRef = useRef(null);
+    const rafRef = useRef(null);
     const [loading, setLoading] = useState(false);
     const [form, setForm] = useState({
         name: "",
@@ -38,6 +42,48 @@ const Contact = () => {
             setLoading(false); // Always stop loading, even on error
         }
     };
+
+    const handlePanelMove = (e) => {
+        const panel = imagePanelRef.current;
+        if (!panel || rafRef.current) return;
+
+        const rect = panel.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+        const dx = (x - 0.5) * 2;
+        const dy = (y - 0.5) * 2;
+
+        rafRef.current = requestAnimationFrame(() => {
+            rafRef.current = null;
+            if (imageRef.current) {
+                imageRef.current.style.transform = `scale(1.07) translate(${dx * 10}px, ${dy * 10}px)`;
+            }
+            if (glowRef.current) {
+                glowRef.current.style.transform = `translate(${dx * 20}px, ${dy * 20}px)`;
+            }
+        });
+    };
+
+    const handlePanelLeave = () => {
+        if (rafRef.current) {
+            cancelAnimationFrame(rafRef.current);
+            rafRef.current = null;
+        }
+        if (imageRef.current) {
+            imageRef.current.style.transform = "scale(1.03) translate(0px, 0px)";
+        }
+        if (glowRef.current) {
+            glowRef.current.style.transform = "translate(0px, 0px)";
+        }
+    };
+
+    useEffect(() => {
+        return () => {
+            if (rafRef.current) {
+                cancelAnimationFrame(rafRef.current);
+            }
+        };
+    }, []);
 
     return (
         <section id="contact" className="flex-center section-padding">
@@ -108,15 +154,35 @@ const Contact = () => {
                         </div>
                     </div>
                     <div className="xl:col-span-7 min-h-96">
-                        <div className="w-full h-full rounded-3xl bg-gradient-to-br from-[#0d0d1a] to-[#1a0a2e] border border-white/10 p-10 flex flex-col justify-between gap-10">
-                            <div>
-                                <img src="/images/chat.png" alt="Contact" className="w-20 h-20 object-contain mb-6 opacity-80" />
-                                <h3 className="text-white text-2xl font-semibold mb-3">Open to opportunities</h3>
-                                <p className="text-white-50 text-base leading-relaxed">
-                                    Whether it's a full-time role, a freelance project, or just a conversation about technology — I'm always happy to connect.
-                                </p>
+                        <div className="w-full h-full flex flex-col gap-6">
+                            <div
+                                ref={imagePanelRef}
+                                onMouseMove={handlePanelMove}
+                                onMouseLeave={handlePanelLeave}
+                                className="relative overflow-hidden rounded-3xl border border-white/10 min-h-[320px] xl:min-h-[430px] group"
+                            >
+                                <img
+                                    ref={imageRef}
+                                    src="/images/Breakfree.jpg"
+                                    alt="Break free"
+                                    className="w-full h-full object-cover scale-[1.03] transition-transform duration-500 will-change-transform"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent" />
+                                <div
+                                    ref={glowRef}
+                                    className="absolute inset-0 bg-[radial-gradient(circle_at_75%_15%,rgba(255,255,255,0.25),transparent_45%)] transition-transform duration-500 will-change-transform"
+                                />
+
+                                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                                    <p className="text-white/80 text-xs md:text-sm uppercase tracking-[0.25em] mb-3">Available for collaboration</p>
+                                    <h3 className="text-white text-2xl md:text-4xl font-bold leading-tight">Break free. Build bold.</h3>
+                                    <p className="text-white/80 text-sm md:text-base mt-3 max-w-xl">
+                                        I design and ship interactive products with strong visuals, smooth motion, and production-ready engineering.
+                                    </p>
+                                </div>
                             </div>
-                            <div>
+
+                            <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 md:p-8">
                                 <p className="text-white-50 text-sm mb-4 uppercase tracking-widest">Find me on</p>
                                 <div className="flex gap-4 flex-wrap">
                                     {socialImgs.map((social) => (
@@ -125,7 +191,7 @@ const Contact = () => {
                                             href={social.url}
                                             target="_blank"
                                             rel="noreferrer"
-                                            className="flex items-center gap-3 bg-white/5 hover:bg-white/10 transition-colors rounded-xl px-5 py-3 border border-white/10"
+                                            className="flex items-center gap-3 bg-black/40 hover:bg-black/60 transition-colors rounded-xl px-5 py-3 border border-white/10"
                                         >
                                             <img src={social.imgPath} alt={social.name} className="w-6 h-6 object-contain" />
                                             <span className="text-white-50 text-sm capitalize">{social.name}</span>
