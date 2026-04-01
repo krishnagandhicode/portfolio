@@ -332,20 +332,14 @@ const socialImgs = [
     // },
     {
         name: "github",
-        url: "https://github.com/krishnaGandhi11",
+        url: "https://github.com/krishnagandhicode",
         imgPath: "/images/github.png",
     },
     {
         name: "linkedin",
-        url: "https://www.linkedin.com/in/krishna-gandhi-go/",
+        url: "https://www.linkedin.com/in/krishnagandhicode/",
         imgPath: "/images/linkedin.png",
     },
-    {
-        name: "x",
-        url: "https://drive.google.com/file/d/1f4qNiBu1_EzNKLGhoiLNpqVvM1ThX497/view?usp=sharing",
-        imgPath: "/images/Resume.png",
-    },
-
 ];
 
 const about = {
