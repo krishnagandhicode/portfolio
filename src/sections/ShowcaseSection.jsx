@@ -92,12 +92,10 @@ const ShowcaseSection = () => {
 
                     <div className="first-project-wrapper">
                         <div className="image-wrapper">
-                            <img
-                                className="cursor-pointer"
-                                loading="lazy"
+                            <IframePreview
+                                src={leftProjectLink}
+                                title="Real-Time Intelligent Navigation Assistant"
                                 onClick={() => window.open(leftProjectLink, "_blank")}
-                                src="/images/project1-ww.webp"
-                                alt="Real-Time Intelligent Navigation Assistant"
                             />
                         </div>
                         <div className="text-content">
