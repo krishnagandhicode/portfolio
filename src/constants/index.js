@@ -134,71 +134,6 @@ const techStackImgs = [
     },
 ];
 
-const techStackIcons = [
-    {
-        name: "React",
-        modelPath: "/models/react_logo-transformed.glb",
-        scale: 1,
-        rotation: [0, 0, 0],
-    },
-    {
-        name: "Python",
-        modelPath: "/models/python-transformed.glb",
-        scale: 0.8,
-        rotation: [0, 0, 0],
-    },
-    {
-        name: "JavaScript",
-        modelPath: "/models/node-transformed.glb",
-        scale: 5,
-        rotation: [0, -Math.PI / 2, 0],
-    },
-    {
-        name: "Java",
-        modelPath: "/models/java_programming_language_logo.glb",
-        scale: 3,
-        rotation: [0, 0, 0],
-    },
-    {
-        name: "Git &  GitHub",
-        modelPath: "/models/git-svg-transformed-Copy1.glb",
-        scale: 0.05,
-        rotation: [0, -Math.PI / 4, 0],
-    },
-    {
-        name: "Figma",
-        modelPath: "/models/figma.glb",
-        scale: 1.5,
-        rotation: [1.5, 0, 0],
-    },
-    {
-        name: "Project Manager",
-        modelPath: "/models/git-svg-transformed.glb",
-        scale: 0.05,
-        rotation: [0, -Math.PI / 4, 0],
-    },
-    {
-        name: "Meachine Learning",
-        modelPath: "/models/python-transformed.glb",
-        scale: 2,
-        rotation: [0, 0, 0],
-    },
-    {
-        name: "Backend Developer",
-        modelPath: "/models/node-transformed-Copy1.glb",
-        scale: 5,
-        rotation: [0, -Math.PI / 2, 0],
-    },
-    {
-        name: "Interactive Developer",
-        modelPath: "/models/three.js-transformed.glb",
-        scale: 0.05,
-        rotation: [0, 0, 0],
-    },
-
-
-];
-
 const expCards = [
     {
         review:"",
@@ -365,7 +300,6 @@ export {
     expLogos,
     testimonials,
     socialImgs,
-    techStackIcons,
     techStackImgs,
     navLinks,
     about,

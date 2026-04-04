@@ -69,4 +69,5 @@ const HeroExperience = ({ isVisible = true }) => {
         </Canvas>
     )
 }
+
 export default HeroExperience

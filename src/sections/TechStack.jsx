@@ -42,13 +42,7 @@ const TechStack = () => {
                     sub="🤝 What I Bring to the Table"
                 />
                 <div className="tech-grid">
-                    {/* Loop through the techStackIcons array and create a component for each item.
-              The key is set to the name of the tech stack icon, and the classnames are set to
-              card-border, tech-card, overflow-hidden, and group. The xl:rounded-full and rounded-lg
-              classes are only applied on larger screens. */}
-
-
-                     {/*This is for the img part*/}
+                    {/* Render image-based skill cards */}
                    {techStackImgs.map((techStackIcon, index) => (
                     <div
                         key={index}

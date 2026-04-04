@@ -22,6 +22,14 @@ This repository contains my personal portfolio website, built to showcase select
 - Curated project showcase with live previews
 - Experience and tech stack sections with custom content
 
+## License and Usage
+
+This portfolio and its source code are shared publicly for viewing and evaluation only.
+
+- Reuse, cloning, reskinning, redistribution, or commercial use is not permitted without prior written permission.
+- You may not present this work (in whole or in part) as your own.
+- All rights are reserved by the author.
+
 ## Learning Focus
 
 - Debugging production-ready frontend issues
