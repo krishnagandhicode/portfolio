@@ -174,9 +174,7 @@ const Contact = () => {
                                 />
 
                                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                                    <p className="text-white/80 text-xs md:text-sm uppercase tracking-[0.25em] mb-3">Available for collaboration</p>
-                                    <h3 className="text-white text-2xl md:text-4xl font-bold leading-tight">Break free. Build bold.</h3>
-                                    <p className="text-white/80 text-sm md:text-base mt-3 max-w-xl">
+                                    <p className="text-white/80 text-sm md:text-base max-w-xl">
                                         A strong believer of: A problem well defined is a problem half solved.
                                     </p>
                                 </div>

@@ -82,7 +82,7 @@ const ShowcaseSection = () => {
         });
     }, { scope: sectionRef, dependencies: [] })
 
-    const leftProjectLink = "https://jobjolt-ai.streamlit.app/";
+    const leftProjectLink = "https://waywiseapp.tech/";
 
     return (
         <div id="work" ref={sectionRef} className="app-showcase">
