@@ -301,7 +301,7 @@ section {
         @apply my-10 md:mt-20 mt-10 text-white-50 px-5 md:px-20 xl:px-20 flex items-center justify-center;
 
         .footer-container {
-            @apply w-full flex items-center justify-center;
+            @apply w-full flex flex-col items-center justify-center;
         }
 
         p {
