@@ -27,9 +27,3 @@ This portfolio and its source code are shared publicly for viewing and evaluatio
 - Reuse, cloning, reskinning, redistribution, or commercial use is not permitted without prior written permission.
 - You may not present this work, in whole or in part, as your own.
 - All rights are reserved by the author.
-
-## Contact
-
-- Portfolio: https://krishnagandhi.me
-- GitHub: https://github.com/krishnagandhicode
-- LinkedIn: https://www.linkedin.com/in/krishnagandhicode
