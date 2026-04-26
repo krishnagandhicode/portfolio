@@ -1,6 +1,6 @@
 # Krishna Gandhi - Portfolio Website
 
-This repository contains my production portfolio website, built to present my projects, technical strengths, and practical engineering experience in a clear, recruiter-friendly format.
+This repository contains my production portfolio website, built to present my projects, technical strengths, and practical engineering experience.
 
 ## Live Site
 
